@@ -1,16 +1,381 @@
-html,
-body {
-  padding: 0;
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+@import "vendors/reset.css";
+.titleH2, h2 {
+  font-size: 1.5em;
+  color: #2f3542;
+  font-weight: Bold;
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
+html {
+  box-sizing: border-box;
+  color: #2f3542;
 }
-
-* {
+html body {
+  background-color: #F9F9F9;
+}
+html body * {
   box-sizing: border-box;
 }
+html body main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2em;
+  transition: all ease-in 5000ms;
+}
+html body main.showedCart {
+  width: 70%;
+}
+html body main section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 0 1em;
+}
+html body main section:first-of-type {
+  padding-top: calc(86.83px + 2em);
+}
+html body main section div.wrapper-section {
+  display: flex;
+  max-width: 1200px;
+  width: 100%;
+}
+
+header {
+  background-color: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(5px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 999;
+}
+header div.wrapper-header {
+  display: flex;
+  justify-content: space-between;
+  max-width: 1500px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 2em 1em;
+}
+header div.wrapper-header nav ul li button {
+  background-color: transparent;
+  border: none;
+}
+body .cartFloatingButton {
+  position: fixed;
+  right: 2em;
+  bottom: 2em;
+  border: none;
+  background-color: transparent;
+  z-index: 99;
+}
+body .cartFloatingButton div.wrapper {
+  position: relative;
+  padding: 1em;
+  background-color: rgba(255, 255, 255, 0.75);
+  width: 50px;
+  height: 50px;
+  border-radius: 100px;
+  cursor: pointer;
+  transition: all ease-in 150ms;
+  border: 1px solid #FF4B2B;
+}
+body .cartFloatingButton div.wrapper:hover, body .cartFloatingButton div.wrapper:focus {
+  background-color: white;
+}
+body .cartFloatingButton div.wrapper svg {
+  fill: #FF4B2B;
+  width: 100%;
+  height: 100%;
+}
+body .cartFloatingButton div.wrapper span.nbProduct {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: #F9F9F9;
+  padding: 0.5em;
+  font-size: 0.75em;
+  color: #FF4B2B;
+  border-radius: 100px;
+  line-height: 0;
+  display: block;
+}
+body aside {
+  position: fixed;
+  top: calc(86.83px + 2em);
+  right: 1em;
+  bottom: 2em;
+  margin: auto 0;
+  background-color: #ffffff;
+  width: 30%;
+  z-index: 200;
+  border-radius: 4px;
+  overflow: hidden;
+  overflow-scrolling: auto;
+}
+body aside div.wrapper-aside {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+body aside div.wrapper-aside div.wrapper {
+  padding: 3em 0 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  overflow: scroll;
+  height: 100%;
+}
+body aside div.wrapper-aside div.wrapper span.titleH2 {
+  padding: 0 1em;
+}
+body aside div.wrapper-aside div.wrapper ul.listing-cart {
+  display: flex;
+  flex-direction: column;
+}
+body aside div.wrapper-aside div.wrapper ul.listing-cart li.ProductCart {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2em;
+  padding: 1em;
+  border-radius: 4px;
+  transition: all ease-in 150ms;
+}
+body aside div.wrapper-aside div.wrapper ul.listing-cart li.ProductCart:hover, body aside div.wrapper-aside div.wrapper ul.listing-cart li.ProductCart:focus {
+  background-color: #F9F9F9;
+}
+body aside div.wrapper-aside div.wrapper ul.listing-cart li.ProductCart img {
+  object-fit: contain;
+  object-position: center center;
+  width: 100px;
+  height: 100px;
+}
+body aside div.wrapper-aside div.wrapper ul.listing-cart li.ProductCart div.infos {
+  display: flex;
+  align-items: center;
+  gap: 3em;
+}
+body aside div.wrapper-aside div.wrapper ul.listing-cart li.ProductCart div.infos div.texte {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+}
+body aside div.wrapper-aside div.wrapper ul.listing-cart li.ProductCart div.infos div.texte .title {
+  font-weight: bold;
+  text-decoration: none;
+  color: #2f3542;
+}
+body aside div.wrapper-aside div.wrapper ul.listing-cart li.ProductCart div.infos div.texte button {
+  display: inline-flex;
+  align-self: flex-start;
+  color: #FF4B2B;
+  border: 1px solid #FF4B2B;
+  background-color: transparent;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: all ease-in 150ms;
+}
+body aside div.wrapper-aside div.wrapper ul.listing-cart li.ProductCart div.infos div.texte button:hover, body aside div.wrapper-aside div.wrapper ul.listing-cart li.ProductCart div.infos div.texte button:focus {
+  background-color: #FF4B2B;
+  color: #ffffff;
+}
+body aside div.wrapper-aside div.wrapper ul.listing-cart li.ProductCart div.quantity {
+  display: flex;
+  gap: 0.5em;
+  flex-direction: column;
+  align-items: center;
+}
+body aside div.wrapper-aside div.wrapper ul.listing-cart li.ProductCart div.quantity button {
+  padding: 0.5em;
+  border-radius: 4px;
+  border: 1px solid rgba(255, 75, 43, 0);
+  background-color: rgba(47, 53, 66, 0);
+  color: #FF4B2B;
+  font-size: 1em;
+  cursor: pointer;
+  transition: all ease-in 150ms;
+  width: 100%;
+}
+body aside div.wrapper-aside div.wrapper ul.listing-cart li.ProductCart div.quantity button:hover, body aside div.wrapper-aside div.wrapper ul.listing-cart li.ProductCart div.quantity button:focus {
+  border: 1px solid rgba(255, 75, 43, 0.5);
+}
+body aside div.wrapper-aside .totalCart {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  box-shadow: 0px 0px 10px rgba(40, 40, 40, 0.2);
+}
+body aside div.wrapper-aside .totalCart span {
+  color: #2f3542;
+  font-size: 1.25em;
+  padding: 0.5em;
+}
+body aside div.wrapper-aside .totalCart a {
+  text-decoration: none;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #FF4B2B;
+  width: 100%;
+  padding: 1em 2em;
+  transition: all ease-in 150ms;
+  cursor: pointer;
+  box-sizing: border-box;
+}
+body aside div.wrapper-aside .totalCart a:hover, body aside div.wrapper-aside .totalCart a:focus {
+  background-color: #f72500;
+}
+body aside div.wrapper-aside .totalCart a svg {
+  fill: #ffffff;
+}
+body aside div.wrapper-aside button.close {
+  position: absolute;
+  top: 0.5em;
+  right: 0.5em;
+  padding: 0.5em;
+  border-radius: 4px;
+  border: 1px solid rgba(255, 75, 43, 0);
+  background-color: rgba(47, 53, 66, 0);
+  color: #FF4B2B;
+  font-size: 1em;
+  cursor: pointer;
+  transition: all ease-in 150ms;
+}
+body aside div.wrapper-aside button.close:hover, body aside div.wrapper-aside button.close:focus {
+  border: 1px solid rgba(255, 75, 43, 0.5);
+}
+
+section.allProduct {
+  position: relative;
+}
+section.allProduct div.wrapper-section {
+  flex-direction: column;
+  gap: 4em;
+  z-index: 20;
+}
+section.allProduct div.wrapper-section h1 {
+  font-size: 1.5em;
+  align-self: flex-start;
+  font-weight: bold;
+}
+section.allProduct div.wrapper-section ul.ProductListing {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2em;
+  justify-content: center;
+  align-items: stretch;
+}
+section.allProduct div.wrapper-section ul.ProductListing li.Product {
+  flex-basis: 250px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 4px;
+  box-shadow: 0px 0px 0px rgba(40, 40, 40, 0.1);
+  transition: all ease-in-out 150ms;
+  overflow: hidden;
+}
+section.allProduct div.wrapper-section ul.ProductListing li.Product:hover, section.allProduct div.wrapper-section ul.ProductListing li.Product:focus {
+  transform: scale(1.025);
+  background-color: white;
+  box-shadow: 0px 0px 10px rgba(40, 40, 40, 0.1);
+}
+section.allProduct div.wrapper-section ul.ProductListing li.Product:hover a, section.allProduct div.wrapper-section ul.ProductListing li.Product:focus a {
+  transform: translateY(0);
+}
+section.allProduct div.wrapper-section ul.ProductListing li.Product div.infos {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 3em 2em 3em 2em;
+}
+section.allProduct div.wrapper-section ul.ProductListing li.Product div.infos picture {
+  display: block;
+  height: 150px;
+  margin-bottom: 1em;
+}
+section.allProduct div.wrapper-section ul.ProductListing li.Product div.infos picture img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+section.allProduct div.wrapper-section ul.ProductListing li.Product div.infos span {
+  text-align: center;
+}
+section.allProduct div.wrapper-section ul.ProductListing li.Product div.infos span.title {
+  font-size: 1.25em;
+}
+section.allProduct div.wrapper-section ul.ProductListing li.Product div.infos span.price {
+  font-size: 1.25em;
+  margin-top: 1em;
+}
+section.allProduct div.wrapper-section ul.ProductListing li.Product button {
+  position: absolute;
+  top: 1em;
+  background: transparent;
+  border: none;
+  padding: 0;
+  display: block;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+}
+section.allProduct div.wrapper-section ul.ProductListing li.Product button svg {
+  width: 100%;
+  height: 100%;
+  fill: rgba(47, 53, 66, 0.1);
+  transition: all ease-in 150ms;
+}
+section.allProduct div.wrapper-section ul.ProductListing li.Product button.addToCart {
+  left: 1em;
+}
+section.allProduct div.wrapper-section ul.ProductListing li.Product button.addToFavorites {
+  right: 1em;
+}
+section.allProduct div.wrapper-section ul.ProductListing li.Product button:hover svg, section.allProduct div.wrapper-section ul.ProductListing li.Product button:focus svg {
+  fill: rgba(47, 53, 66, 0.25);
+}
+section.allProduct div.wrapper-section ul.ProductListing li.Product button:active svg {
+  fill: #FF4B2B;
+}
+section.allProduct div.wrapper-section ul.ProductListing li.Product a {
+  align-self: center;
+  background-color: #ff4b2b;
+  border: 0px solid rgba(255, 75, 43, 0);
+  backdrop-filter: blur(5px);
+  transition: all ease-in-out 150ms;
+  width: 100%;
+  text-align: center;
+  padding: 1em 0;
+  text-decoration: none;
+  color: #ffffff;
+  transform: translateY(100%);
+}
+section.allProduct div.wrapper-section ul.ProductListing li.Product a:hover, section.allProduct div.wrapper-section ul.ProductListing li.Product a:focus {
+  background-color: #f72500;
+}
+
+section.loader {
+  height: 100vh;
+}
+section.loader div.wrapper-section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/*# sourceMappingURL=globals.css.map */

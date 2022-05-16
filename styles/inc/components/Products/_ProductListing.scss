@@ -1,0 +1,22 @@
+section.allProduct{
+  position: relative;
+  div.wrapper-section{
+    flex-direction: column;
+    gap: 4em;
+    z-index: 20;
+    h1{
+      font-size: 1.5em;
+      align-self: flex-start;
+      font-weight: bold;
+    }
+    ul.ProductListing{
+      width: 100%;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2em;
+      justify-content: center;
+      align-items: stretch;
+      @import "Product";
+    }
+  }
+}

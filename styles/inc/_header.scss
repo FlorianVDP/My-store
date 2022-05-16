@@ -1,0 +1,39 @@
+//TODO End this header
+header{
+  background-color: rgba($white, .75);
+  backdrop-filter: blur(5px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 999;
+  div.wrapper-header{
+    display: flex;
+    justify-content: space-between;
+    max-width: $maxWidth;
+    width: 100%;
+    margin: 0 auto;
+    padding: 2em 1em;
+    a{
+
+    }
+    nav{
+      ul{
+        li{
+          a{
+          }
+          button{
+            background-color: transparent;
+            border: none;
+            svg{
+
+            }
+          }
+        }
+      }
+    }
+  }
+}

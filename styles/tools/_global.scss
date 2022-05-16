@@ -1,0 +1,38 @@
+html{
+  box-sizing: border-box;
+  color: $black;
+  body{
+    background-color: $grey;
+    *{
+      box-sizing: border-box;
+    }
+    main{
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 2em;
+      transition: all ease-in 5000ms;
+      &.showedCart{
+        width: 70%;
+      }
+      section{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        padding: 0 1em;
+        //box-sizing: border-box;
+        &:first-of-type{
+          padding-top: calc(#{$menuHeight} + 2em);
+        }
+        div.wrapper-section{
+          display: flex;
+          max-width: 1200px;
+          width: 100%;
+        }
+      }
+    }
+  }
+}
